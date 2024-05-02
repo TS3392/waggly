@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wagg.ly</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .welcome-text {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      max-width: 800px;
+    }
+    .form-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .form {
+      display: flex;
+      flex-direction: column;
+      margin: 1rem;
+      padding: 1rem;
+      border: 1px solid #050404;
+      border-radius: 5px;
+      width: 45%;
+    }
+    .form-h3 {
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .form-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    label {
+      margin-right: 0.5rem;
+      width: 6rem;
+      text-align: left;
+    }
+    input[type="text"] {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      flex: 1;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      margin: 0.5rem;
+    }
+    .button-container button:first-child {
+      background-color: #333;
+      color: #fff;
+    }
+    .button-container button:last-child {
+      background-color: #ddd;
+      color: #000;
+    }
+    .response-container {
+      justify-content: center;
+      text-align: center;
+      margin-top: 1.5rem;
+      max-width: 500px;
+      font-style: italic;
+      color: green;
+    }
+    
+  </style>
+</head>
+<body>
+  <img src="logo.png" alt="Website Logo">
+
+  <p class="welcome-text">Welcome to Wagg.ly! We connect busy dog owners to safe and trustworthy dog walkers in your area.</p>
+
+  <div class="form-container">
+    <form id="register_dog_form" name="register_dog_form">
+      <h3 class="form-h3">Register a Dog</h3>
+      <div class="form-group">
+        <label for="owner_name">Your Name:</label>
+        <input type="text" id="owner_name" name="owner_name" placeholder="Enter your name" required>
+      </div>
+      <div class="form-group">
+        <label for="owner_email">Email:</label>
+        <input type="text" id="owner_email" name="owner_email" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="dog_name">Dog's Name:</label>
+        <input type="text" id="dog_name" name="dog_name" placeholder="Enter your dog's name" required>
+      </div>
+      <div class="button-container">
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      </div>
+    </form>    
+    <div class="form-container">
+      <form id="register_walker_form" name="register_walker_form">
+        <h3 class="form-h3">Register a Walker</h3>
+        <div class="form-group">
+          <label for="walker_name">Your Name:</label>
+          <input type="text" id="walker_name" name="walker_name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <label for="walker_email">Email:</label>
+          <input type="text" id="walker_email" name="walker_email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="walker_postcode">Postcode:</label>
+          <input type="text" id="walker_postcode" name="walker_postcode" placeholder="Enter your postcode" required>
+        </div>
+        <div class="button-container">
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="response-container">
+    <text id="response-text"></text>
+  </div>
+  <script>
+    const dog_form = document.getElementById('register_dog_form');
+    const dog_response=document.getElementById('response-text')
+    dog_form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const owner_name = document.getElementById('owner_name').value;
+      const owner_email = document.getElementById('owner_email').value;
+      const dog_name = document.getElementById('dog_name').value;
+      fetch("https://waggly-2111805.azurewebsites.net/api/register_dog?", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ owner_name: owner_name, owner_email: owner_email, dog_name: dog_name })
+      })
+      .then(dog_form.reset())
+      .then(response => response.text())
+      .then(data => {
+        dog_response.textContent = `${data}`;
+      })
+      .catch(error => {
+        dog_response.textContent = `${error.message}`;
+      });
+    });
+  </script>
+  <script>
+    const walker_form = document.getElementById('register_walker_form');
+    const walker_response=document.getElementById('response-text')
+    walker_form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const walker_name = document.getElementById('walker_name').value;
+      const walker_email = document.getElementById('walker_email').value;
+      const walker_postcode = document.getElementById('walker_postcode').value;
+      fetch("https://waggly-2111805.azurewebsites.net/api/register_walker?", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ walker_name: walker_name, walker_email: walker_email, walker_postcode: walker_postcode })
+      })
+      .then(walker_form.reset())
+      .then(response => response.text())
+      .then(data => {
+        walker_response.textContent = `${data}`;
+      })
+      .catch(error => {
+        walker_response.textContent = `${error.message}`;
+      });
+    });
+  </script>
+</body>
