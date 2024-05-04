@@ -8,3 +8,8 @@ Wagg.ly is a cloud based web app, hosted in Microsoft Azure, which helps dog own
 - Set Service and compute tier to General Purpose and Serverless respectively. For prototyping purposes, compute hardware and data max size settings can be set to the minimum.
 - Ensure that the *'Add current client IP address'* and *'Allow Azure services and resources to access this server'* settings in the Networking tab are set to Yes.
 - Once the database has been set up, navigate to the query editor and sign in. Execute [the setup script](/sqlserver/setup.sql) which drops and creates the necessary tables as appropriate.
+
+## 2. Create Static Web App
+
+- Within Azure Portal, navigate to *Create a resource > Static Web App* using GitHub as the deployment source.
+- The GitHub repository used should mirror the structure of this repository and must contain the files [index.html](index.html) and [Logo.png](Logo.png) in the root folder of the main branch. The *'App location'* setting must point towards the repository root (/). 
