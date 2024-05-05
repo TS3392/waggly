@@ -1,4 +1,4 @@
-# [Wagg.ly - Dog Walking Web App](https://delightful-coast-0d5ddf203.5.azurestaticapps.net/) cool dog
+# [Wagg.ly - Dog Walking Web App](https://delightful-coast-0d5ddf203.5.azurestaticapps.net/) Cool dog
 
 Wagg.ly is a cloud based web app, hosted in Microsoft Azure, which helps dog owners identify dog walkers in their area. All code required to deploy the prototype  is contained within this repository, which can be implemented through the process set out below:
 
