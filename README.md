@@ -1,4 +1,4 @@
-# [Wagg.ly - Dog Walking Web App](https://delightful-coast-0d5ddf203.5.azurestaticapps.net/) Cool dog
+# [Wagg.ly - Dog Walking Web App](https://delightful-coast-0d5ddf203.5.azurestaticapps.net/) :dog::dog2::heart_eyes:
 
 Wagg.ly is a cloud based web app, hosted in Microsoft Azure, which helps dog owners identify dog walkers in their area. All code required to deploy the prototype  is contained within this repository, which can be implemented through the process set out below:
 
@@ -11,14 +11,18 @@ Wagg.ly is a cloud based web app, hosted in Microsoft Azure, which helps dog own
 - Within the database, navigate to *Settings > Connection strings* and copy the connection string titled *ADO.NET (SQL authentication)*. Replace *{your_password}* accordingly and keep aside for later use.
 
 ## 2. Create Azure Functions
+
 - Ensure the following installations are in place:  
   - [Visual Studio Code](https://code.visualstudio.com/)
   - [Python 3.10](https://www.python.org/downloads/release/python-3100/)
   - [Python Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
   - [Azure Functions Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
-- Open Visual Studio Code, open the Azure extension (*Shift+Alt+A*) and sign into the Azure account used at step 1.
+- Open Visual Studio Code, open the Azure extension (*Shift+Alt+A*) and sign into the Azure account used in Step 1.
 - Navigate to *Workspace > Create Function* and *Create new project* in a new folder, using *Python (Programming Model V2)* as the language and *3.10.0* as the Python interpreter.
-- In the Explorer for the new workspace, open *function_app.py* and replace the code in its entirety with [the version in this repository](functions/function_app.py).
+- In the Explorer for the new workspace, open *function_app.py* and replace the code in its entirety with [the version in this repository](functions/function_app.py). Save and close.
+- In the Resources section of the Azure extension, navigate to *Create a resource > Create Function App in Azure* and use *Python 3.10* as the runtime stack. 
+- Right click on the new Function App and select *Deploy to Function App*. Once complete right click on *Application Settings* and select *Add New Setting*. The setting should be named *SqlConnectionString* and contain the connection string saved in Step 1.
+- Right click on *register_dog* / *register_walker*, select *Copy Function Url* and keep the links to each function aside.
 
 ## 3. Create Static Web App
 
