@@ -19,12 +19,15 @@ Wagg.ly is a cloud based web app, hosted in Microsoft Azure, which helps dog own
   - [Azure Functions Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 - Open Visual Studio Code, open the Azure extension (*Shift+Alt+A*) and sign into the Azure account used in Step 1.
 - Navigate to *Workspace > Create Function* and *Create new project* in a new folder, using *Python (Programming Model V2)* as the language and *3.10.0* as the Python interpreter.
-- In the Explorer for the new workspace, open *function_app.py* and replace the code in its entirety with [the version in this repository](functions/function_app.py). Save and close.
+- In the Explorer for the new workspace, open *function_app.py* and replace the code in its entirety with [the version in this repository](functions/function_app.py).
 - In the Resources section of the Azure extension, navigate to *Create a resource > Create Function App in Azure* and use *Python 3.10* as the runtime stack. 
 - Right click on the new Function App and select *Deploy to Function App*. Once complete right click on *Application Settings* and select *Add New Setting*. The setting should be named *SqlConnectionString* and contain the connection string saved in Step 1.
 - Right click on *register_dog* / *register_walker*, select *Copy Function Url* and keep the links to each function aside.
 
 ## 3. Create Static Web App
 
+- Create a GitHub repository mirroring the structure of this repository. It must contain the files [index.html](index.html) and [Logo.png](Logo.png) in the root folder of the main branch.
+- Within *index.html*, replace the API links for *register_dog* (line 146) and *register_walker* (line 171) with the function urls copied in [Step 2](#25).
+
 - Within Azure Portal, navigate to *Create a resource > Static Web App* to create a Static Web App using GitHub as the deployment source.
-- The GitHub repository used should mirror the structure of this repository and must contain the files [index.html](index.html) and [Logo.png](Logo.png) in the root folder of the main branch. The *'App location'* setting must point towards the repository root (/). 
+- The GitHub repository used should mirror the structure of this repository and  The *'App location'* setting must point towards the repository root (/). 
