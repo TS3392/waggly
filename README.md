@@ -22,8 +22,8 @@ Wagg.ly is a cloud based web app, hosted in Microsoft Azure, which helps dog own
 - In the Explorer for the new workspace, open *'function_app.py'* and replace the code in its entirety with [the version in this repository](functions/function_app.py).
 - In the Resources section of the Azure extension, navigate to *'Create a resource > Create Function App in Azure'* and use *'Python 3.10'* as the runtime stack. 
 - Right click on the new Function App and select *'Deploy to Function App'*. Once complete right click on *'Application Settings'* and select *'Add New Setting'*. The setting should be named ***SqlConnectionString*** and contain the connection string saved in Step 1.
-- Right click on *register_dog* / *register_walker*, select *'Copy Function Url'* and keep the links to each function aside.
-- Open the Function App within the Azure Portal and navigate to *'API > CORS'*. Add '*' to *Allowed Origins* and ensure any others are removed. 
+- Right click on *'register_dog'* and *'register_walker'* in turn, select *'Copy Function Url'* and keep the links to each function aside.
+- Open the Function App within the Azure Portal and navigate to *'API > CORS'*. Add a single asterisk (*) to *Allowed Origins* and ensure any others are removed. 
 
 ## 3. Create Static Web App
 
