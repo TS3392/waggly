@@ -29,5 +29,5 @@ Wagg.ly is a cloud based web app, hosted in Microsoft Azure, which helps dog own
 
 - Create a GitHub repository mirroring the structure of this repository. It must contain the files [index.html](index.html) and [Logo.png](Logo.png) in the root folder of the main branch.
 - Within *'index.html'*, replace the API links for *'register_dog'* (line 146) and *'register_walker'* (line 171) with the function urls copied in Step 2 - ensure this version is uploaded to the repository before proceeding.
-- Within Azure Portal, navigate to *Create a resource > Static Web App* to create a Static Web App using GitHub as the deployment source.The *'App location'* setting must point towards the repository root (/).
+- Within Azure Portal, navigate to *Create a resource > Static Web App* to create a Static Web App using GitHub as the deployment source. The *'App location'* setting must point towards the repository root (/).
 - Once fully complete, the fully functional app should be available using the link displayed in the service.
